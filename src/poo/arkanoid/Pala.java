@@ -8,22 +8,37 @@ import java.awt.Color;
  */
 public class Pala {
 
-  private Margen margen; // margen, del que querremos saber las dimensiones
+  private static final double ANCHO_INICIAL = 1.5;
+  private static final double ALTO_INICIAL = 0.5;
+  public static final double VELOCIDAD_INICIAL = 0.3;
+  
   private double tx, ty; // tamaño
   private double x, y; // posicion
   private double v; // velocidad horizontal
   
+  public double getX() {
+    return x;
+  }
+
+  public double getAncho() {
+    return tx;
+  }
+
+  public double getY() {
+    return y;
+  }
+  
+  
+  
   /**
    * Inicializa los valores de una pala nueva.
-   * @param margen los márgenes del juego
    */
-  public Pala(Margen margen) {
+  public Pala() {
     y = 0; // empieza debajo de la pantalla
     x = 0;
-    tx = 1.5;
-    ty = 0.5;
-    v = 0.3;
-    this.margen = margen;
+    tx = ANCHO_INICIAL;
+    ty = ALTO_INICIAL;
+    v = VELOCIDAD_INICIAL;
   }
   
   /**
@@ -44,8 +59,8 @@ public class Pala {
     // del juego
     if (x < 0) {
       x = 0;
-    } else if (x >= margen.getAncho() - tx) {
-      x = margen.getAncho() - tx;
+    } else if (x >= Margen.ANCHO - tx) {
+      x = Margen.ANCHO - tx;
     }
     // dibujamos la pala como un rectángulo magenta
     vent.dibujaRectangulo(x, y, tx, ty, Color.MAGENTA);

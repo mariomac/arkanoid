@@ -3,6 +3,10 @@
 Proyecto colectivo de la asignatura de Programación Orientada a Objetos de la
 ETSETB-UPC.
 
+## Actualizaciones
+
+* **13/3/2019**: añadida clase `Bola`, así como su lógica más básica 
+
 ## Diseño inicial
 
 * Clase Pelota
