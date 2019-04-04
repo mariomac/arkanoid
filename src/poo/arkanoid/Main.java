@@ -1,6 +1,9 @@
 package poo.arkanoid;
 
 import info.macias.Ventana;
+import java.awt.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Main {
   public static void main(String[] args) {
@@ -9,7 +12,8 @@ public class Main {
     Margen m = new Margen();
     Pala p = new Pala();
     Bola b = new Bola(p);
-
+    Muro muro = new Muro(b);
+            
     Ventana vent = new Ventana("Palas!");
     // si te va lento, ponlo a false
     vent.setSuavizado(true);
@@ -25,6 +29,7 @@ public class Main {
       p.moverYMostrar(vent);
       m.dibujar(vent);
       b.moverYDibujar(vent);
+      muro.dibujar(vent);
       // y mostramos el fotograma actualizado en la ventana
       vent.actualizaFotograma();
     }

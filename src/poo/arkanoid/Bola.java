@@ -58,18 +58,15 @@ public class Bola {
     
     // verificar choque margen derecho
     if (x + r >= Margen.ANCHO) {
-      a = Math.PI - a;
-      x = Margen.ANCHO - r; // ajustamos a margen derecho
+      rebotarIzquierda();
     }
     // verificar choque arriba
     if (y + r >= Margen.ALTO) {
-      a = 2*Math.PI -a;
-      y = Margen.ALTO -r; // ajustamos a margen superior
+      rebotarAbajo();
     }
     // verificar choque izquierda
     if (x - r <= 0) {
-      a = 3*Math.PI -a;  
-      x = r; // ajustamos a margen izquierdo
+      rebotarDerecha();
     }
     // verificar choque pala: chocará cuando la bola esté a una determinada
     // altura, y cuando su posición esté dentro de los márgenes de la pala
@@ -77,8 +74,7 @@ public class Bola {
             && y >-r
             && x >= pala.getX()
             && x <= pala.getX() + pala.getAncho()) {
-      a = (2 * Math.PI - a);
-      y = +r;
+      rebotarArriba();
     }
     // si cae al foso, reiniciamos los valores
     if (y < -Margen.ALTO_FOSO) {
@@ -86,5 +82,38 @@ public class Bola {
     }
     
   }
+
+  public void rebotarIzquierda() {
+    a = Math.PI - a;
+    //x = Margen.ANCHO - r; // ajustamos a margen derecho
+  }
+
+  public void rebotarAbajo() {
+    a = 2*Math.PI -a;
+    //y = Margen.ALTO -r; // ajustamos a margen superior
+  }
+  
+  public void rebotarDerecha() {
+    a = 3*Math.PI -a;  
+    //x = r; // ajustamos a margen izquierdo
+  }
+  
+  public void rebotarArriba() {
+    a = (2 * Math.PI - a);
+    //y = +r;
+  }
+
+  public double getR() {
+    return r;
+  }
+
+  public double getX() {
+    return x;
+  }
+
+  public double getY() {
+    return y;
+  }
+  
   
 }
